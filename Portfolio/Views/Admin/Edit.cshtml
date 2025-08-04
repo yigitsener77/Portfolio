@@ -1,0 +1,27 @@
+﻿@model Portfolio.Entities.Models.Project
+
+<div class="admin-form-container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Proje Düzenle</h2>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div class="form-group">
+                    <label for="Title">Proje Başlığı</label>
+                    <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required />
+                </div>
+                <div class="form-group">
+                    <label for="Description">Açıklama</label>
+                    <textarea class="form-control" id="Description" name="Description" required>@Model.Description</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Link">Proje Linki</label>
+                    <input type="url" class="form-control" id="Link" name="Link" value="@Model.Link" />
+                </div>
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model Portfolio.Models.AdminConsoleViewModel
+
+<div class="admin-dashboard">
+    <h2>Admin Paneli</h2>
+    <a href="@Url.Action("Create", "Admin")" class="btn btn-primary mb-4">Yeni Proje Ekle</a>
+
+    <h3>Projeler</h3>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Başlık</th>
+                <th>Açıklama</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var project in Model.Projects)
+            {
+                <tr>
+                    <td>@project.Title</td>
+                    <td>@project.Description</td>
+                    <td class="actions">
+                        <a href="@Url.Action("Edit", "Admin", new { id = project.Id })" class="btn btn-secondary">Düzenle</a>
+                        <a href="@Url.Action("Delete", "Admin", new { id = project.Id })" class="btn btn-danger">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Mesajlar</h3>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Gönderen</th>
+                <th>Email</th>
+                <th>Mesaj</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in Model.Messages)
+            {
+                <tr>
+                    <td>@message.Name</td>
+                    <td>@message.Email</td>
+                    <td>@message.Content</td>
+                    <td>@message.SentAt.ToString("g")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
